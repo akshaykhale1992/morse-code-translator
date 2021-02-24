@@ -30,7 +30,7 @@
   <!-- Add your site or application content here -->
   <div class="container mx-auto py-4 font-sans"
     x-data="{ translate_text: 'Input Original Text Here', morse_text: 'Morse code output will be generated here'}">
-    <h1 class="text-center">A Simple Morse Code Interpretor</h1>
+    <h1 class="text-4xl text-center">A Simple Morse Code Interpretor</h1>
     <textarea class="my-5 w-full border p-3 h-40" style="resize: none;outline: none;"
       x-model="translate_text"></textarea>
     <button @click="morse_text = translate(translate_text)"
@@ -39,22 +39,56 @@
     <textarea x-model="morse_text" class="my-5 w-full border p-3 h-40" style="resize: none;outline: none;"></textarea>
   </div>
   <script src="js/vendor/modernizr-3.11.4.min.js"></script>
-  <script src="js/app.js"></script>
-
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
-    window.ga = function () {
-      ga.q.push(arguments)
-    };
-    ga.q = [];
-    ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto');
-    ga('set', 'anonymizeIp', true);
-    ga('set', 'transport', 'beacon');
-    ga('send', 'pageview')
+    const mapping = {
+      'A': '.-',
+      'B': '-...',
+      'C': '-.-.',
+      'D': '-..',
+      'E': '.',
+      'F': '..-.',
+      'G': '--.',
+      'H': '....',
+      'I': '..',
+      'J': '.---',
+      'K': '-.-',
+      'L': '.-..',
+      'M': '--',
+      'N': '-.',
+      'O': '---',
+      'P': '.--.',
+      'Q': '--.-',
+      'R': '.-.',
+      'S': '...',
+      'T': '-',
+      'U': '..-',
+      'V': '...-',
+      'W': '.--',
+      'X': '-..-',
+      'Y': '-.--',
+      'Z': '--..',
+      '1': '.----',
+      '2': '..---',
+      '3': '...--',
+      '4': '....-',
+      '5': '.....',
+      '6': '-....',
+      '7': '--...',
+      '8': '---..',
+      '9': '----.',
+      '0': '-----'
+    }
+
+    function translate(translate_text) {
+      let morseCode = '';
+      translate_text.toUpperCase().split('').map((value) => {
+        const morseValue = typeof mapping[value] === 'undefined' ? value : mapping[value]
+        morseCode += morseValue;
+      })
+      return morseCode;
+    }
 
   </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>
