@@ -34,7 +34,7 @@
     <textarea class="my-5 w-full border p-3 h-40" style="resize: none;outline: none;"
       x-model="translate_text"></textarea>
     <button @click="morse_text = translate(translate_text)"
-      class="border px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-gray-50"
+      class="border px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 active:bg-blue-600 focus:bg-blue-600 text-gray-50"
       style="outline: none;">Translate</button>
     <textarea x-model="morse_text" class="my-5 w-full border p-3 h-40" style="resize: none;outline: none;"></textarea>
   </div>
